@@ -15,7 +15,6 @@ import glob
     return df.iloc[:-last_n_samples]
     # df.to_csv(fic_export_data, index=False)
 
-
 logging.basicConfig(level=logging.INFO)
  
  
@@ -53,7 +52,7 @@ def load_data(lag_days: int):
  
 # Assuming your CSV is named 'data.csv' and is in the same directory as your app.py
 df = load_data(LAG_N_DAYS)
-df = remove_data(df,last_n_samples=4*24)
+df = remove_data(df, last_n_samples=4*24)
  
 # Creating a line chart
 st.subheader("Line Chart of Numerical Data Over Time")
