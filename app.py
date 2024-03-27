@@ -80,14 +80,13 @@ st.subheader("Moyenne de la consommation par heure de la journée")
 fig_hourly_avg = px.bar(hourly_avg_consumption, x='Hour', y=col_donnees, title="Moyenne de la consommation par heure de la journée")
 st.plotly_chart(fig_hourly_avg)
 
-def calculer_consommation_moyenne(consommation_par_heure):
-    # Calculer la somme totale de la consommation
+# Calculer la somme totale de la consommation
     somme_consommation = sum(consommation_par_heure)
     
-    # Calculer le nombre total d'heures
+# Calculer le nombre total d'heures
     nombre_heures = len(consommation_par_heure)
     
-    # Calculer la consommation moyenne
+# Calculer la consommation moyenne
     consommation_moyenne = somme_consommation / nombre_heures
     
     return consommation_moyenne
