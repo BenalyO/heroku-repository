@@ -1,4 +1,4 @@
-[14:15] 
+[14:21] Lionnel MICOMYIZA
 import pandas as pd
 from typing import List
 import os
@@ -53,4 +53,3 @@ if __name__ == "__main__":
  
     # data_file: str = "data/raw/eco2mix-regional-tr.csv"
     main_process()
- 
