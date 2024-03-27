@@ -9,11 +9,11 @@ import logging
 import os
 import glob
 
-
 logging.basicConfig(level=logging.INFO)
 
 
 LAG_N_DAYS: int = 7
+
 
 # * INIT REPO FOR DATA
 os.makedirs("data/raw/", exist_ok=True)
