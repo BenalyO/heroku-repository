@@ -1,3 +1,4 @@
+[14:15] 
 import pandas as pd
 from typing import List
 import os
@@ -53,7 +54,3 @@ if __name__ == "__main__":
     # data_file: str = "data/raw/eco2mix-regional-tr.csv"
     main_process()
  
-Dispose d’un menu contextuel
-
-
-Dispose d’un menu contextuel
