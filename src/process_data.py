@@ -1,4 +1,6 @@
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 from typing import List
 import os
 import glob
@@ -42,13 +44,56 @@ def export_data(df: pd.DataFrame):
     df.to_csv(fic_export_data, index=False)
 
 
+def consommation_par_heure(df: pd.DataFrame, heure: int):
+    """
+    Calcule la consommation moyenne pour une heure donnée de la journée.
+
+    Arguments :
+    df : pd.DataFrame
+        Le DataFrame contenant les données de consommation.
+    heure : int
+        L'heure de la journée pour laquelle calculer la consommation (entre 0 et 23).
+
+    Returns :
+    float
+        La consommation moyenne pour cette heure de la journée.
+    """
+    # Filtrer les données pour l'heure donnée
+    consommations_heure = df[df[col_date].dt.hour == heure][col_donnees]
+    # Calculer la moyenne
+    moyenne_heure = np.mean(consommations_heure)
+    return moyenne_heure
+
+
+def moyenne_consommation_par_heure(df: pd.DataFrame):
+    """
+    Génère un graphique montrant la moyenne de la consommation par heure de la journée.
+
+    Arguments :
+    df : pd.DataFrame
+        Le DataFrame contenant les données de consommation.
+    """
+    heures = np.arange(24)
+    moyennes = [consommation_par_heure(df, heure) for heure in heures]
+
+    # Création du graphique
+    plt.figure(figsize=(10, 6))
+    plt.plot(heures, moyennes, label='Moyenne de la consommation', linestyle='--', color='red')
+    plt.xlabel('Heure de la journée')
+    plt.ylabel('Consommation moyenne (kWh)')
+    plt.title('Moyenne de la consommation par heure de la journée')
+    plt.xticks(heures)
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+
 def main_process():
     df: pd.DataFrame = load_data()
     df = format_data(df)
     export_data(df)
+    moyenne_consommation_par_heure(df)
 
 
 if __name__ == "__main__":
-
-    # data_file: str = "data/raw/eco2mix-regional-tr.csv"
     main_process()

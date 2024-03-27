@@ -69,3 +69,14 @@ numerical_column = col_donnees
 # Create interactive line chart using Plotly
 fig = px.line(df, x=col_date, y=col_donnees, title="Consommation en fonction du temps")
 st.plotly_chart(fig)
+
+# Ajouter une colonne d'heure
+df['Hour'] = df[col_date].dt.hour
+ 
+# Grouper les données par heure et calculer la moyenne de la consommation
+hourly_avg_consumption = df.groupby('Hour')[col_donnees].mean().reset_index()
+ 
+# Créer un diagramme de la moyenne de la consommation par heure
+st.subheader("Moyenne de la consommation par heure de la journée")
+fig_hourly_avg = px.bar(hourly_avg_consumption, x='Hour', y=col_donnees, title="Moyenne de la consommation par heure de la journée")
+st.plotly_chart(fig_hourly_avg)
