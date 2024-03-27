@@ -1,4 +1,3 @@
-[14:21] Lionnel MICOMYIZA
 import pandas as pd
 from typing import List
 import os
